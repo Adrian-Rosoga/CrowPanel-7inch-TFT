@@ -130,7 +130,7 @@ static void create_ui() {
     lv_obj_align(btn, LV_ALIGN_CENTER, 0, 0);
 
     lv_obj_t *btn_label = lv_label_create(btn);
-    lv_label_set_text(btn_label, "Touch Me!");
+    lv_label_set_text(btn_label, "Touch Me!!!");
     lv_obj_center(btn_label);
 
     lv_obj_t *counter = lv_label_create(lv_scr_act());
@@ -168,41 +168,44 @@ void setup() {
     digitalWrite(LCD_BL, HIGH);
     Serial.println("Display OK");
 
-    /* --- Diagnostic tests (uncomment to run instead of LVGL) ---
-    // Direct framebuffer fill test
-    uint16_t *fb = (uint16_t *)gfx->getFramebuffer();
-    Serial.printf("Framebuffer pointer: %p\n", fb);
-    if (fb) {
-        Serial.println("Direct FB: filling RED...");
-        for (int i = 0; i < LCD_WIDTH * LCD_HEIGHT; i++) fb[i] = 0xF800;
-        delay(2000);
-        Serial.println("Direct FB: filling GREEN...");
-        for (int i = 0; i < LCD_WIDTH * LCD_HEIGHT; i++) fb[i] = 0x07E0;
-        delay(2000);
-        Serial.println("Direct FB: filling BLUE...");
-        for (int i = 0; i < LCD_WIDTH * LCD_HEIGHT; i++) fb[i] = 0x001F;
-        delay(2000);
+    if (true)
+    {
+        // --- Diagnostic tests (uncomment to run instead of LVGL) ---
+        // Direct framebuffer fill test
+        uint16_t *fb = (uint16_t *)gfx->getFramebuffer();
+        Serial.printf("Framebuffer pointer: %p\n", fb);
+        if (fb) {
+            Serial.println("Direct FB: filling RED...");
+            for (int i = 0; i < LCD_WIDTH * LCD_HEIGHT; i++) fb[i] = 0xF800;
+            delay(2000);
+            Serial.println("Direct FB: filling GREEN...");
+            for (int i = 0; i < LCD_WIDTH * LCD_HEIGHT; i++) fb[i] = 0x07E0;
+            delay(2000);
+            Serial.println("Direct FB: filling BLUE...");
+            for (int i = 0; i < LCD_WIDTH * LCD_HEIGHT; i++) fb[i] = 0x001F;
+            delay(2000);
+        }
+        // GFX API fill test
+        gfx->fillScreen(0xF800); delay(2000); // RED
+        gfx->fillScreen(0x07E0); delay(2000); // GREEN
+        gfx->fillScreen(0x001F); delay(2000); // BLUE
+        gfx->fillScreen(0xFFFF); delay(2000); // WHITE
+        // Text test
+        gfx->fillScreen(0x0000);
+        gfx->setTextColor(0xFFFF);
+        gfx->setTextSize(3);
+        gfx->setCursor(200, 200);
+        gfx->println("CrowPanel 7\" Test OK!");
+        // I2C scan
+        for (uint8_t addr = 1; addr < 127; addr++) {
+            Wire.beginTransmission(addr);
+            if (Wire.endTransmission() == 0)
+                Serial.printf("  I2C device at 0x%02X\n", addr);
+        }
+        Serial.println("=== DIAGNOSTIC COMPLETE ===");
+        //while (1) delay(1000);
+        // --- End diagnostic tests ---
     }
-    // GFX API fill test
-    gfx->fillScreen(0xF800); delay(2000); // RED
-    gfx->fillScreen(0x07E0); delay(2000); // GREEN
-    gfx->fillScreen(0x001F); delay(2000); // BLUE
-    gfx->fillScreen(0xFFFF); delay(2000); // WHITE
-    // Text test
-    gfx->fillScreen(0x0000);
-    gfx->setTextColor(0xFFFF);
-    gfx->setTextSize(3);
-    gfx->setCursor(200, 200);
-    gfx->println("CrowPanel 7\" Test OK!");
-    // I2C scan
-    for (uint8_t addr = 1; addr < 127; addr++) {
-        Wire.beginTransmission(addr);
-        if (Wire.endTransmission() == 0)
-            Serial.printf("  I2C device at 0x%02X\n", addr);
-    }
-    Serial.println("=== DIAGNOSTIC COMPLETE ===");
-    while (1) delay(1000);
-    --- End diagnostic tests */
 
     /* Initialize touch - GT911 at 0x5D */
     ts.begin(0x5D);
