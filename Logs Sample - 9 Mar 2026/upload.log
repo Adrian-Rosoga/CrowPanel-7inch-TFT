@@ -1,0 +1,138 @@
+ *  Executing task: C:\Users\Adi\.platformio\penv\Scripts\platformio.exe run --target upload 
+
+
+Processing crowpanel-7 (platform: espressif32; board: esp32-s3-devkitc-1; framework: arduino)
+---------------------------------------------------------------------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (53.3.10) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.1.0 
+ - framework-arduinoespressif32-libs @ 5.3.0+sha.083aad99cf 
+ - tool-esptoolpy @ 4.8.5 
+ - tool-mkfatfs @ 2.0.1 
+ - tool-mklittlefs @ 3.2.0 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - tool-riscv32-esp-elf-gdb @ 14.2.0+20240403 
+ - tool-xtensa-esp-elf-gdb @ 14.2.0+20240403 
+ - toolchain-riscv32-esp @ 13.2.0+20240530 
+ - toolchain-xtensa-esp-elf @ 13.2.0+20240530
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ deep+, Compatibility ~ soft
+Found 85 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- GFX Library for Arduino @ 1.6.5
+|-- TAMC_GT911 @ 1.0.2
+|-- lvgl @ 8.4.0
+|-- Wire @ 3.1.0
+|-- Networking @ 3.1.0
+|-- WiFi @ 3.1.0
+|-- HTTPClient @ 3.1.0
+|-- NetworkClientSecure @ 3.1.0
+|-- SPI @ 3.1.0
+Building in release mode
+Retrieving maximum program size .pio\build\crowpanel-7\firmware.elf
+Checking size .pio\build\crowpanel-7\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [===       ]  29.5% (used 96828 bytes from 327680 bytes)
+Flash: [====      ]  42.2% (used 1328380 bytes from 3145728 bytes)
+Configuring upload protocol...
+AVAILABLE: cmsis-dap, esp-bridge, esp-builtin, esp-prog, espota, esptool, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa
+CURRENT: upload_protocol = esptool
+Looking for upload port...
+Auto-detected: COM7
+Uploading .pio\build\crowpanel-7\firmware.bin
+esptool.py v4.8.5
+Serial port COM7
+Connecting....
+Chip is ESP32-S3 (QFN56) (revision v0.2)
+Features: WiFi, BLE, Embedded PSRAM 8MB (AP_3v3)
+Crystal is 40MHz
+MAC: b8:f8:62:7f:33:74
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 921600
+Changed.
+Configuring flash size...
+Auto-detected Flash size: 4MB
+Flash will be erased from 0x00000000 to 0x00004fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Flash will be erased from 0x0000e000 to 0x0000ffff...
+Flash will be erased from 0x00010000 to 0x00154fff...
+SHA digest in image updated
+Compressed 18928 bytes to 12223...
+Writing at 0x00000000... (100 %)
+Wrote 18928 bytes (12223 compressed) at 0x00000000 in 0.4 seconds (effective 354.5 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 137...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (137 compressed) at 0x00008000 in 0.1 seconds (effective 479.2 kbit/s)...
+Hash of data verified.
+Compressed 8192 bytes to 47...
+Writing at 0x0000e000... (100 %)
+Wrote 8192 bytes (47 compressed) at 0x0000e000 in 0.1 seconds (effective 685.3 kbit/s)...
+Hash of data verified.
+Compressed 1328752 bytes to 847855...
+Writing at 0x00010000... (1 %)
+Writing at 0x0001d2b0... (3 %)
+Writing at 0x0002a78a... (5 %)
+Writing at 0x00031b62... (7 %)
+Writing at 0x0003a9d6... (9 %)
+Writing at 0x000448f1... (11 %)
+Writing at 0x0004c97d... (13 %)
+Writing at 0x0005b93e... (15 %)
+Writing at 0x000612cd... (17 %)
+Writing at 0x00066b2e... (19 %)
+Writing at 0x0006c500... (21 %)
+Writing at 0x0007150f... (23 %)
+Writing at 0x0007684b... (25 %)
+Writing at 0x0007c373... (26 %)
+Writing at 0x00081856... (28 %)
+Writing at 0x00086dac... (30 %)
+Writing at 0x0008cc99... (32 %)
+Writing at 0x00092df7... (34 %)
+Writing at 0x00098518... (36 %)
+Writing at 0x0009e02c... (38 %)
+Writing at 0x000a3e1e... (40 %)
+Writing at 0x000a92b1... (42 %)
+Writing at 0x000ae569... (44 %)
+Writing at 0x000b39e9... (46 %)
+Writing at 0x000b8e56... (48 %)
+Writing at 0x000be43e... (50 %)
+Writing at 0x000c39c8... (51 %)
+Writing at 0x000c8acb... (53 %)
+Writing at 0x000cde25... (55 %)
+Writing at 0x000d3708... (57 %)
+Writing at 0x000d8a34... (59 %)
+Writing at 0x000dda74... (61 %)
+Writing at 0x000e31d4... (63 %)
+Writing at 0x000e8cef... (65 %)
+Writing at 0x000ee2e3... (67 %)
+Writing at 0x000f3405... (69 %)
+Writing at 0x000f8339... (71 %)
+Writing at 0x000fd614... (73 %)
+Writing at 0x00102767... (75 %)
+Writing at 0x00107ada... (76 %)
+Writing at 0x0010caf2... (78 %)
+Writing at 0x00111d63... (80 %)
+Writing at 0x00117cf3... (82 %)
+Writing at 0x0011d576... (84 %)
+Writing at 0x00122edb... (86 %)
+Writing at 0x00128665... (88 %)
+Writing at 0x0012f65b... (90 %)
+Writing at 0x00139358... (92 %)
+Writing at 0x0013f06c... (94 %)
+Writing at 0x00143fee... (96 %)
+Writing at 0x0014a013... (98 %)
+Writing at 0x0014fb61... (100 %)
+Wrote 1328752 bytes (847855 compressed) at 0x00010000 in 11.7 seconds (effective 906.1 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+======================================================= [SUCCESS] Took 109.08 seconds =======================================================
+ *  Terminal will be reused by tasks, press any key to close it. 

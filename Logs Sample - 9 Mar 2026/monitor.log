@@ -1,0 +1,30 @@
+
+--- Terminal on COM7 | 115200 8-N-1
+--- Available filters and text transformations: debug, default, direct, esp32_exception_decoder, hexlify, log2file, nocontrol, printable, send_on_enter, time
+--- More details at https://bit.ly/pio-monitor-filters
+--- Quit: Ctrl+C | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1074
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xac0
+load:0x403cb700,len:0x2e58
+entry 0x403c8890
+CrowPanel 7.0" HMI - Starting...
+PCA9557 OK
+Display OK
+Framebuffer pointer: 0x3c1316e0
+Direct FB: filling RED...
+Direct FB: filling GREEN...
+Direct FB: filling BLUE...
+  I2C device at 0x18
+  I2C device at 0x5D
+=== DIAGNOSTIC COMPLETE ===
+Touch OK
+Connecting to WiFi 'FaraFir'...... Connected! IP: 192.168.1.125
+NTP synced: 2026-03-09 07:28:09
+Weather: 0.0°C
+LVGL UI ready!

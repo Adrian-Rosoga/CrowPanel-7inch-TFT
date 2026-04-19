@@ -342,7 +342,7 @@ Key settings in `include/lv_conf.h`:
 - Color swap: `LV_COLOR_16_SWAP 0` (native byte order)
 - Memory: `LV_MEM_SIZE 48KB` (LVGL internal heap)
 - Display buffers: 2× double-buffered, 800×48 pixels each, allocated in PSRAM
-- Fonts enabled: Montserrat 12, 14, 16, 20, 24
+- Fonts enabled: Montserrat 12, 14, 16, 18, 20, 24, 40, 48
 - Tick source: `LV_TICK_CUSTOM 1` using Arduino `millis()`
 - Demos: All disabled (custom UI in `create_ui()`)
 
@@ -424,3 +424,41 @@ The final working configuration uses: Arduino_GFX for display output, TAMC_GT911
 for capacitive touch input, LVGL 8.4 for the GUI framework, and raw I2C writes to
 the PCA9557 for display enable control — all running on the Arduino framework with
 ESP-IDF 5.x underneath.
+
+---
+
+## Changelog
+
+### [2026-04-19] Display flicker fix, UI improvements, weather enhancements
+
+**Display stability (critical fix):**
+- Restored platform to `espressif32@53.3.10` (ESP-IDF 5.x) — was accidentally
+  downgraded to v6.6.0 (ESP-IDF 4.4) during a prior debug session, which removed
+  bounce buffer support and caused periodic display flicker/blanking.
+- Upgraded GFX Library for Arduino to 1.6.5 (`^1.4.9`) for bounce buffer support.
+- Added bounce buffer (`LCD_WIDTH * 10` pixels) to `Arduino_ESP32RGBPanel`
+  constructor — decouples LCD DMA refresh from PSRAM bus contention caused by
+  WiFi and I2C activity.
+- Added LVGL servicing (`lv_timer_handler()`) during WiFi reconnect blocking loops
+  to prevent display stalls during network operations.
+
+**UI layout changes:**
+- Increased all status label fonts from `lv_font_montserrat_24` to
+  `lv_font_montserrat_48` for better readability.
+- Moved touch button to bottom-left corner (`LV_ALIGN_BOTTOM_LEFT, 20, -60`).
+- Moved press counter to bottom-left (`LV_ALIGN_BOTTOM_LEFT, 20, -20`).
+- Status labels spaced at y=20, 80, 140, 200, 260 from top.
+
+**Weather API fix:**
+- Updated Open-Meteo API from deprecated `current_weather` endpoint to
+  `current=temperature_2m` with proper JSON field parsing.
+- Added 10-second HTTP timeout to prevent indefinite hangs.
+- Added daily min/max temperature display: API now requests
+  `daily=temperature_2m_min,temperature_2m_max` and displays as
+  `SE9 4JH: X.X °C (min/max)` format.
+- Reduced weather retry interval from 15 minutes to 30 seconds on failure.
+
+**NTP sync fix:**
+- NTP now retries every 10 seconds on failure instead of waiting 24 hours.
+- Once successfully synced, reverts to normal 24-hour re-sync interval.
+- Added `ntp_synced` flag to track sync state.
